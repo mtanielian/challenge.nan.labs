@@ -8,9 +8,7 @@ import SwitchImgOptions from '../imageOption/SwitchImgOptions'
 const GetConfByFunction = ({category, action}) => {
   const {optionSelected} = useContext(ImageContext)
   const options = getDefFunction({ category, action })
-  const {expects, initValue, param, short_description} = options
-  
-  let Component = ''
+  const {expects, param } = options
   
   const handleSetOperation = (val) => {
     console.log(val)
@@ -22,7 +20,7 @@ const GetConfByFunction = ({category, action}) => {
   } else if (expects[0].possible_values) {
     return <SelectImgOptions  options={options} handleOptionSelected={handleSetOperation} />
   } else if (expects[0].type === 'boolean') {
-    return <SwitchImgOptions value={initValue} handleOptionSelected={handleSetOperation} />
+    return <SwitchImgOptions options={options} handleOptionSelected={handleSetOperation} />
   }
 }
 

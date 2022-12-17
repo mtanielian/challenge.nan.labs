@@ -2,11 +2,11 @@ import { useContext,  useEffect, useState } from "react"
 import MainLayout from "../Layouts/MainLaoyut"
 import { ImageContext } from "../contexts/ImageContext"
 import { getImagesImgix } from "../services/imgix.services"
-import { Autocomplete, Button, Grid, Skeleton, TextField } from "@mui/material"
 import { saveAs } from 'file-saver'
+import { Autocomplete, Fab, Grid, Skeleton, TextField } from "@mui/material"
+import AddIcon from '@mui/icons-material/Add';
 
 import "../styles.css";
-
 
 
 const HomePage = () => {
@@ -14,8 +14,7 @@ const HomePage = () => {
   const [imgOrigin, setImgOrigin] = useState()
   
   const {
-    setOptions,options,
-    image, setImage, imageProperties, setImageProperties
+    setOptions, image, setImage, imageProperties, setImageProperties
   } = useContext(ImageContext)
   
   
@@ -46,6 +45,7 @@ const HomePage = () => {
     setImage(`${url}?w=800&h=600`)
     setImgOrigin(`${url}?w=800&h=600`)
     setOptions({})
+    setImageProperties({})
   }
   
 
@@ -68,7 +68,7 @@ const HomePage = () => {
             
           
           {image === '' 
-            ? <Skeleton variant="rectangular" width={600} height={300} />
+            ? <Skeleton variant="rectangular" width={800} height={400} />
             : <img src={image} alt='Imagen para tunearla' />
             
             
@@ -95,8 +95,19 @@ const HomePage = () => {
           />
         </Grid>
       </Grid>
-      <Button onClick={downloadImage}>Download</Button>
-      <Button onClick={resetImage}>Reset Image</Button>
+      <Fab onClick={downloadImage} variant="extended" color="primary" aria-label="add"
+        sx={{position:"absolute", bottom:'20px', right:'250px'}}
+      >
+        Download Image
+      </Fab>
+      <Fab onClick={resetImage} variant="extended" color="primary" aria-label="add"
+        sx={{position:"absolute", bottom:'20px', right:'100px'}}
+      >
+        Reset Image
+      </Fab>
+      <Fab color="secondary" aria-label="add" sx={{position:"absolute", bottom:'20px', right:'20px'}}>
+        <AddIcon />
+      </Fab>
     </MainLayout>
   )
 }

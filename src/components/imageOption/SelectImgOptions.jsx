@@ -1,16 +1,17 @@
-import  {useEffect, useState } from 'react'
+import  {useContext, useState } from 'react'
+import { ImageContext } from '../../contexts/ImageContext';
 import { Autocomplete, TextField } from '@mui/material';
 
 
 const SelectImgOptions = ({ options, handleOptionSelected = () => {} }) => {
-  const [value, setValue] = useState(options.default || '');
+  const {imageProperties} = useContext(ImageContext)
+  let initValue = options.initValue
+  if (imageProperties[options.param]) { 
+    initValue = imageProperties[options.param]
+  }
+  
+  const [value, setValue] = useState(initValue);
   const [inputValue, setInputValue] = useState('');
-
-  useEffect(() => {
-    setValue(options.default)
-    setInputValue('')
-  }, [options])
-
 
   return (
     <Autocomplete

@@ -1,6 +1,4 @@
-import { createContext, useEffect, useState } from "react";
-import { getDefFunction } from "../utils/getDefFunction";
-
+import { createContext, useState } from "react";
 export const ImageContext = createContext({})
 
 export const ImageContextProvider = ({children}) => {
@@ -11,6 +9,7 @@ export const ImageContextProvider = ({children}) => {
   const [imageProperties, setImageProperties] = useState({})
 
   const optionSelected = ({param, val}) => {
+    if (image === '') return
     setImageProperties( (prev) => { return { ...prev, [param] : val} } )
   } 
 
@@ -20,7 +19,8 @@ export const ImageContextProvider = ({children}) => {
         categoryAndAction, setCategoryAndAction,
         prevImageState, setPrevImageState,
         options, setOptions,
-        image, setImage, optionSelected, imageProperties, setImageProperties
+        image, setImage, optionSelected, 
+        imageProperties, setImageProperties
       }}
     >
       {children}
