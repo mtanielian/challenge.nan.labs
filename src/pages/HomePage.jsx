@@ -5,17 +5,18 @@ import { getImagesImgix } from "../services/imgix.services"
 import { saveAs } from 'file-saver'
 import { Autocomplete, Fab, Grid, Skeleton, TextField } from "@mui/material"
 import AddIcon from '@mui/icons-material/Add';
+import UndoIcon from '@mui/icons-material/Undo';
 
 import "../styles.css";
 
 
 const HomePage = () => {
   const [images, setImages] = useState([])
-  const [imgOrigin, setImgOrigin] = useState()
+  
   
   const {
-    setOptions, image, setImage, imageProperties, setImageProperties
-  } = useContext(ImageContext)
+    setOptions, image, setImage, setImageProperties, handleUndo,
+    imgOrigin, setImgOrigin, historyProps } = useContext(ImageContext)
   
   
   const loadImages = async () => {
@@ -31,35 +32,30 @@ const HomePage = () => {
     loadImages()
   }, [])
 
-  useEffect(() => {
-    if(Object.keys(imageProperties).length > 0) {
-      const parmas = Object.keys(imageProperties).map(k => `&${k}=${imageProperties[k]}`).join('')
-      setImage(imgOrigin.concat(parmas))
-    }
-
-  }, [imageProperties, imgOrigin, setImage])
-
+ 
 
   const haldleChangeImage = (name) => {
     const {url} = images.find(i => i.name === name) || images[0]
     setImage(`${url}?w=800&h=600`)
     setImgOrigin(`${url}?w=800&h=600`)
+    historyProps.current = []
     setOptions({})
     setImageProperties({})
   }
   
 
   const downloadImage = () => {
+    if (!image) return 
     saveAs( image, 'image.jpg') 
   }
 
   const resetImage = () => {
-    setImage(imgOrigin)
+    setImage(prev => imgOrigin)
     setOptions({})
     setImageProperties({})
+    historyProps.current = []
   }
 
-  
   return (
     <MainLayout>
       <Grid container sx={{display:"flex", flexDirection:"column", justifyContent: 'center', alignContent:"center"}}>
@@ -107,6 +103,9 @@ const HomePage = () => {
       </Fab>
       <Fab color="secondary" aria-label="add" sx={{position:"absolute", bottom:'20px', right:'20px'}}>
         <AddIcon />
+      </Fab>
+      <Fab color="secondary" aria-label="add" onClick={handleUndo}>
+        <UndoIcon />
       </Fab>
     </MainLayout>
   )

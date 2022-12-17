@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import {  Slider } from '@mui/material'
 import { ImageContext } from '../../contexts/ImageContext'
 
@@ -9,10 +9,15 @@ const SliderImgOption = ({ options, handleOptionSelected = () => {} }) => {
   if (imageProperties[options.param]) { 
     initValue = imageProperties[options.param]
   }
-  
   const [val, setVal] = useState(initValue)
-  
 
+  useEffect(() => {
+    initValue = imageProperties[options.param]
+   
+    setVal(initValue)  
+
+  }, [imageProperties[options.param]])
+  
   return (
     <Slider
       value={val}

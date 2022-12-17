@@ -4,22 +4,17 @@ import { Autocomplete, TextField } from '@mui/material';
 
 
 const SelectImgOptions = ({ options, handleOptionSelected = () => {} }) => {
+  const [inputValue, setInputValue] = useState('');
   const {imageProperties} = useContext(ImageContext)
-  let initValue = options.initValue
+  let initValue = options.initValue || ''
   if (imageProperties[options.param]) { 
     initValue = imageProperties[options.param]
   }
-  
-  const [value, setValue] = useState(initValue);
-  const [inputValue, setInputValue] = useState('');
 
   return (
     <Autocomplete
       fullWidth
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
+      value={initValue}
       getOptionLabel={(option) => String(option) || ''}
       inputValue={inputValue}
       onInputChange={(event, newInputValue) => {
