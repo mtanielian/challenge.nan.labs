@@ -4,14 +4,14 @@ import { saveAs } from 'file-saver'
 import FabButton from './UI/FabButton';
 import AddIcon from '@mui/icons-material/Add';
 import UndoIcon from '@mui/icons-material/Undo';
-
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const HomeOptionsButtons = () => {
 
   const {
     setOptions, image, setImage, setImageProperties, handleUndo,
-    imgOrigin, historyProps } = 
-    useContext(ImageContext)
+    imgOrigin, historyProps, setUploadNewImage, uploadNewImage
+  } = useContext(ImageContext)
   
   const downloadImage = () => {
     if (!image) return 
@@ -25,12 +25,21 @@ const HomeOptionsButtons = () => {
     historyProps.current = []
   }
 
+  const handleNewImage = () => {
+    console.log('entro', uploadNewImage)
+    setUploadNewImage(prev => !prev)
+  }
+
   return (
     <>
       <FabButton title='Download Image' handleClick={downloadImage} style={{position:"absolute", bottom:'20px', right:'250px'}} />
       <FabButton title='Reset Image' handleClick={resetImage} style={{position:"absolute", bottom:'20px', right:'100px'}} />
-      <FabButton color="secondary" style={{position:"absolute", bottom:'20px', right:'20px'}} icon={<AddIcon />} />
-      <FabButton color="secondary" icon={<UndoIcon />} handleClick={handleUndo} />
+      <FabButton color="secondary" 
+        handleClick={handleNewImage} 
+        style={{position:"absolute", bottom:'20px', right:'20px'}} 
+        icon={uploadNewImage ? <CancelIcon /> : <AddIcon />}
+      />
+      <FabButton color="secondary" style={{position:"absolute", bottom:'20px' }} icon={<UndoIcon />} handleClick={handleUndo} />
     </>
   )
 }

@@ -6,6 +6,7 @@ import { Autocomplete, Grid, Skeleton, TextField } from "@mui/material"
 import HomeOptionsButtons from "../components/HomeOptionsButtons"
 
 import "../styles.css";
+import UploadPhoto from "../components/UploadPhoto"
 
 
 const HomePage = () => {
@@ -13,7 +14,7 @@ const HomePage = () => {
   
   const {
     setOptions, image, setImage, setImageProperties,
-    setImgOrigin, historyProps 
+    setImgOrigin, historyProps, uploadNewImage
   } = useContext(ImageContext)
   
   
@@ -46,8 +47,6 @@ const HomePage = () => {
       <Grid container sx={{display:"flex", flexDirection:"column", justifyContent: 'center', alignContent:"center"}}>
         <Grid item xs={12} mb={2}>
           
-            
-          
           {image === '' 
             ? <Skeleton variant="rectangular" width={800} height={400} />
             : <img src={image} alt='Imagen para tunearla' />
@@ -74,6 +73,7 @@ const HomePage = () => {
             options={images.map((option) => option.name)}
             renderInput={(params) => <TextField {...params} name="Images" />}
           />
+          {uploadNewImage && <UploadPhoto />}
         </Grid>
       </Grid>
       <HomeOptionsButtons />

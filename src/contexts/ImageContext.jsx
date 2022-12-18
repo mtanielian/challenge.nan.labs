@@ -8,6 +8,7 @@ export const ImageContextProvider = ({children}) => {
   const [image, setImage] = useState('')
   const [imgOrigin, setImgOrigin] = useState('')
   const [imageProperties, setImageProperties] = useState({})
+  const [uploadNewImage, setUploadNewImage] = useState(false)
   
   const historyProps = useRef([])
 
@@ -45,7 +46,8 @@ export const ImageContextProvider = ({children}) => {
         image, setImage, optionSelected, 
         imageProperties, setImageProperties,
         handleUndo, historyProps,
-        imgOrigin, setImgOrigin
+        imgOrigin, setImgOrigin,
+        uploadNewImage, setUploadNewImage
       }}
     >
       {children}
