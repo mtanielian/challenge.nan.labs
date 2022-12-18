@@ -2,10 +2,8 @@ import { useContext,  useEffect, useState } from "react"
 import MainLayout from "../Layouts/MainLaoyut"
 import { ImageContext } from "../contexts/ImageContext"
 import { getImagesImgix } from "../services/imgix.services"
-import { saveAs } from 'file-saver'
-import { Autocomplete, Fab, Grid, Skeleton, TextField } from "@mui/material"
-import AddIcon from '@mui/icons-material/Add';
-import UndoIcon from '@mui/icons-material/Undo';
+import { Autocomplete, Grid, Skeleton, TextField } from "@mui/material"
+import HomeOptionsButtons from "../components/HomeOptionsButtons"
 
 import "../styles.css";
 
@@ -13,10 +11,10 @@ import "../styles.css";
 const HomePage = () => {
   const [images, setImages] = useState([])
   
-  
   const {
-    setOptions, image, setImage, setImageProperties, handleUndo,
-    imgOrigin, setImgOrigin, historyProps } = useContext(ImageContext)
+    setOptions, image, setImage, setImageProperties,
+    setImgOrigin, historyProps 
+  } = useContext(ImageContext)
   
   
   const loadImages = async () => {
@@ -43,19 +41,6 @@ const HomePage = () => {
     setImageProperties({})
   }
   
-
-  const downloadImage = () => {
-    if (!image) return 
-    saveAs( image, 'image.jpg') 
-  }
-
-  const resetImage = () => {
-    setImage(prev => imgOrigin)
-    setOptions({})
-    setImageProperties({})
-    historyProps.current = []
-  }
-
   return (
     <MainLayout>
       <Grid container sx={{display:"flex", flexDirection:"column", justifyContent: 'center', alignContent:"center"}}>
@@ -91,22 +76,7 @@ const HomePage = () => {
           />
         </Grid>
       </Grid>
-      <Fab onClick={downloadImage} variant="extended" color="primary" aria-label="add"
-        sx={{position:"absolute", bottom:'20px', right:'250px'}}
-      >
-        Download Image
-      </Fab>
-      <Fab onClick={resetImage} variant="extended" color="primary" aria-label="add"
-        sx={{position:"absolute", bottom:'20px', right:'100px'}}
-      >
-        Reset Image
-      </Fab>
-      <Fab color="secondary" aria-label="add" sx={{position:"absolute", bottom:'20px', right:'20px'}}>
-        <AddIcon />
-      </Fab>
-      <Fab color="secondary" aria-label="add" onClick={handleUndo}>
-        <UndoIcon />
-      </Fab>
+      <HomeOptionsButtons />
     </MainLayout>
   )
 }
