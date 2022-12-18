@@ -2,6 +2,7 @@ import { createContext, useEffect, useRef, useState } from "react";
 export const ImageContext = createContext({})
 
 export const ImageContextProvider = ({children}) => {
+  const [images, setImages] = useState([])
   const [categoryAndAction, setCategoryAndAction] = useState({})
   const [prevImageState, setPrevImageState] = useState({})
   const [options, setOptions] = useState({})
@@ -40,6 +41,7 @@ export const ImageContextProvider = ({children}) => {
   return(
     <ImageContext.Provider 
       value={{
+        images, setImages,
         categoryAndAction, setCategoryAndAction,
         prevImageState, setPrevImageState,
         options, setOptions,

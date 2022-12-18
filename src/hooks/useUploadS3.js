@@ -1,29 +1,20 @@
-/*
 import { useContext, useState } from "react";
 import { Upload } from "@aws-sdk/lib-storage";
 import { S3Client } from "@aws-sdk/client-s3";
 import { ImageContext } from "../contexts/ImageContext";
-*/
-import { Box, Button, Stack, TextField } from "@mui/material"
-import { useUploadS3 } from "../hooks/useUploadS3";
 
-window.Buffer = window.Buffer || require("buffer").Buffer;
 
-/*
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
 const REGION = process.env.REACT_APP_REGION
 const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
 const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
 const IMGIX_URI = process.env.REACT_APP_IMGIX_URI
-*/
 
-const UploadPhoto = () => {
-  /*
+export const useUploadS3 = () => {
   const [file, setFile] = useState({})
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-  const {setImage, setImgOrigin, setUploadNewImage} = useContext(ImageContext)
-
+  const {setImage, setImgOrigin, setUploadNewImage, setImages} = useContext(ImageContext)
 
   const handleUpload = () => {
     if (!file.name) return 
@@ -40,8 +31,10 @@ const UploadPhoto = () => {
 
       parallelUploads3.on("httpUploadProgress", (result) => {
         const { Key } = result
-        setImage(`${IMGIX_URI}${Key}?w=800&h=600`)
-        setImgOrigin(`${IMGIX_URI}${Key}?w=800&h=600`)
+        const url = `${IMGIX_URI}${Key}?w=800&h=600`
+        setImage(prev => url)
+        setImgOrigin(prev => url)
+        setImages(prev => [...prev, { url, name: Key }])
         setUploadNewImage(prev => false)
         setLoading(false)
       });
@@ -53,20 +46,10 @@ const UploadPhoto = () => {
       setLoading(false)
     }
   }
-  */
-  const { setFile, loading, error, handleUpload } = useUploadS3()
-
-  if (loading) return <>Uploading photo....</>
-  if (error) return <>Error Uploading photo, try in a few moments</>
-
-  return (
-    <Box mt={5}>
-      <Stack spacing={3}>
-        <TextField type="file" onChange={({target}) => setFile(target?.files[0] || {})} fullWidth helperText="Choose a photo or picture to edit" />
-        <Button onClick={handleUpload} variant="outlined">Upload Photo</Button>
-      </Stack>
-    </Box>
-  )
+  
+  return {
+    setFile, loading, error, handleUpload
+  }
+    
+  
 }
-
-export default UploadPhoto

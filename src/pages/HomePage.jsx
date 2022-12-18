@@ -1,22 +1,20 @@
-import { useContext,  useEffect, useState } from "react"
+import { useContext,  useEffect } from "react"
 import MainLayout from "../Layouts/MainLaoyut"
 import { ImageContext } from "../contexts/ImageContext"
 import { getImagesImgix } from "../services/imgix.services"
 import { Autocomplete, Grid, Skeleton, TextField } from "@mui/material"
+import UploadPhoto from "../components/UploadPhoto"
 import HomeOptionsButtons from "../components/HomeOptionsButtons"
 
 import "../styles.css";
-import UploadPhoto from "../components/UploadPhoto"
 
 
 const HomePage = () => {
-  const [images, setImages] = useState([])
-  
   const {
     setOptions, image, setImage, setImageProperties,
-    setImgOrigin, historyProps, uploadNewImage
+    setImgOrigin, historyProps, uploadNewImage, 
+    images, setImages
   } = useContext(ImageContext)
-  
   
   const loadImages = async () => {
     try {
@@ -32,7 +30,6 @@ const HomePage = () => {
   }, [])
 
  
-
   const haldleChangeImage = (name) => {
     const {url} = images.find(i => i.name === name) || images[0]
     setImage(`${url}?w=800&h=600`)
