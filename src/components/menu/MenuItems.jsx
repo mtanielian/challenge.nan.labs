@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { menuOpts } from '../utils/defMenuItems'
+import { menuOpts } from '../../utils/defMenuItems'
 import MenuSubItems from './MenuSubItems'
 import { Collapse, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import ExpandLess from '@mui/icons-material/ExpandLess';

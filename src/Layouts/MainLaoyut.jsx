@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
+import MenuBar from '../components/menu/MenuBar'
 import { Grid } from "@mui/material"
-import MenuBar from "../components/MenuBar"
+
 
 const MainLayout = ({ children }) => {
   return (
@@ -18,6 +20,10 @@ const MainLayout = ({ children }) => {
       </Grid>
     </Grid>
   )
+}
+
+MainLayout.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default MainLayout

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
+import PropTypes from 'prop-types';
 import {  Slider } from '@mui/material'
 import { ImageContext } from '../../contexts/ImageContext'
 
@@ -30,5 +31,11 @@ const SliderImgOption = ({ options, handleOptionSelected = () => {} }) => {
     />
   )
 }
+
+SliderImgOption.propTypes = {
+  options: PropTypes.object.isRequired,
+  handleOptionSelected: PropTypes.func.isRequired
+}
+
 
 export default SliderImgOption

@@ -1,6 +1,6 @@
 import { Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import React from 'react'
-import GetConfByFunction from './getConfByFunction/GetConfByFunction'
+import GetConfByFunction from '../imageOptions/MenuImageOptions'
 
 const MenuSubItems = ({subMenu, text}) => 
   subMenu.map(({ subText, subIcon }) => (

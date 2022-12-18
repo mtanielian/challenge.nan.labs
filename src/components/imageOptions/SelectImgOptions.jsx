@@ -1,7 +1,7 @@
 import  {useContext, useState } from 'react'
+import PropTypes from 'prop-types';
 import { ImageContext } from '../../contexts/ImageContext';
-import { Autocomplete, TextField } from '@mui/material';
-
+import { Autocomplete, TextField } from '@mui/material'
 
 const SelectImgOptions = ({ options, handleOptionSelected = () => {} }) => {
   const [inputValue, setInputValue] = useState('');
@@ -28,5 +28,12 @@ const SelectImgOptions = ({ options, handleOptionSelected = () => {} }) => {
     
   )
 }
+
+SelectImgOptions.propTypes = {
+  options: PropTypes.object.isRequired,
+  handleOptionSelected: PropTypes.func.isRequired
+}
+
+
 
 export default SelectImgOptions

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import PropTypes from 'prop-types';
 import { Switch } from "@mui/material"
 import { ImageContext } from "../../contexts/ImageContext"
 
@@ -20,5 +21,11 @@ const SwitchImgOptions = ({options, handleOptionSelected = () => {}}) => {
     <Switch  defaultChecked={checked} onClick={(e) => handleClick(e)} />
   )
 }
+
+SwitchImgOptions.propTypes = {
+  options: PropTypes.object.isRequired,
+  handleOptionSelected: PropTypes.func.isRequired
+}
+
 
 export default SwitchImgOptions

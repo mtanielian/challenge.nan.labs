@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
+import PropTypes from 'prop-types'
 import { ImageContext } from '../../contexts/ImageContext'
 import { getDefFunction } from '../../utils/getDefFunction'
-import SelectImgOptions from '../imageOption/SelectImgOptions'
-import SliderImgOption from '../imageOption/SliderImgOption'
-import SwitchImgOptions from '../imageOption/SwitchImgOptions'
+import SelectImgOptions from './SelectImgOptions'
+import SliderImgOption from './SliderImgOption'
+import SwitchImgOptions from './SwitchImgOptions'
 
 const GetConfByFunction = ({category, action}) => {
   const {optionSelected} = useContext(ImageContext)
@@ -11,7 +12,6 @@ const GetConfByFunction = ({category, action}) => {
   const {expects, param } = options
   
   const handleSetOperation = (val) => {
-    console.log(val)
     optionSelected({param, val})
   }
   
@@ -22,6 +22,11 @@ const GetConfByFunction = ({category, action}) => {
   } else if (expects[0].type === 'boolean') {
     return <SwitchImgOptions options={options} handleOptionSelected={handleSetOperation} />
   }
+}
+
+GetConfByFunction.propTypes = {
+  category: PropTypes.string.isRequired,
+  action: PropTypes.string.isRequired
 }
 
 export default GetConfByFunction
