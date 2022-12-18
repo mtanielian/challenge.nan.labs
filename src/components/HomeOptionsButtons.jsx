@@ -14,6 +14,7 @@ const HomeOptionsButtons = () => {
   } = useContext(ImageContext)
   
   const downloadImage = () => {
+    console.log('hizo click')
     if (!image) return 
     saveAs( image, 'image.jpg') 
   }
@@ -26,7 +27,6 @@ const HomeOptionsButtons = () => {
   }
 
   const handleNewImage = () => {
-    console.log('entro', uploadNewImage)
     setUploadNewImage(prev => !prev)
   }
 

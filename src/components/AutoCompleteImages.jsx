@@ -13,7 +13,7 @@ const AutoCompleteImages = () => {
         haldleChangeImage(newInputValue);
       }}
       options={images.map((option) => option.name)}
-      renderInput={(params) => <TextField {...params} name="Images" />}
+      renderInput={(params) => <TextField {...params} name="Images" label='images' />}
     />
   )
 }
