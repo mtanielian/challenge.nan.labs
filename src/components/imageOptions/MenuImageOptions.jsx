@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { ImageContext } from '../../contexts/ImageContext'
 import { getDefFunction } from '../../utils/getDefFunction'
@@ -16,7 +16,7 @@ const GetConfByFunction = ({category, action}) => {
   }
   
   if (expects[0].suggested_range) {
-   return <SliderImgOption options={options} handleOptionSelected={handleSetOperation}  /> 
+   return <SliderImgOption options={options} handleOptionSelected={handleSetOperation}  />
   } else if (expects[0].possible_values) {
     return <SelectImgOptions  options={options} handleOptionSelected={handleSetOperation} />
   } else if (expects[0].type === 'boolean') {
