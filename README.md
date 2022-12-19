@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## .env.template => replace for corrects values
+## .env.template => rename and replace for corrects values
 
 ## Available Scripts
 
