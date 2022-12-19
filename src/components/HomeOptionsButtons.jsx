@@ -12,11 +12,11 @@ const HomeOptionsButtons = () => {
     setOptions, image, setImage, setImageProperties, handleUndo,
     imgOrigin, historyProps, setUploadNewImage, uploadNewImage
   } = useContext(ImageContext)
-  
+
   const downloadImage = () => {
     console.log('hizo click')
-    if (!image) return 
-    saveAs( image, 'image.jpg') 
+    if (!image) return
+    saveAs(image, 'image.jpg')
   }
 
   const resetImage = () => {
@@ -31,16 +31,21 @@ const HomeOptionsButtons = () => {
   }
 
   return (
-    <>
-      <FabButton title='Download Image' handleClick={downloadImage} style={{position:"absolute", bottom:'20px', right:'250px'}} />
-      <FabButton title='Reset Image' handleClick={resetImage} style={{position:"absolute", bottom:'20px', right:'100px'}} />
-      <FabButton color="secondary" 
-        handleClick={handleNewImage} 
-        style={{position:"absolute", bottom:'20px', right:'20px'}} 
-        icon={uploadNewImage ? <CancelIcon /> : <AddIcon />}
-      />
-      <FabButton color="secondary" style={{position:"absolute", bottom:'20px' }} icon={<UndoIcon />} handleClick={handleUndo} />
-    </>
+    <div style={{ bottom: 20, display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: 20 }}>
+      <div>
+        <FabButton title='Download Image' handleClick={downloadImage} style={{}} />
+      </div>
+      <div style={{ display: 'flex', gap: 20 }}>
+        <FabButton title='Reset Image' handleClick={resetImage} style={{}} />
+        <FabButton color="secondary"
+          handleClick={handleNewImage}
+          style={{}}
+          icon={uploadNewImage ? <CancelIcon /> : <AddIcon />}
+        />
+        <FabButton color="secondary" style={{}} icon={<UndoIcon />} handleClick={handleUndo} />
+      </div>
+
+    </div>
   )
 }
 

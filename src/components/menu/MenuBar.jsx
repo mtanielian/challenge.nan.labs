@@ -2,20 +2,20 @@ import MenuItems from './MenuItems'
 import { IconButton, Box, Drawer, AppBar, CssBaseline, Toolbar, Typography, Divider } from '@mui/material'
 
 
-const drawerWidth = 600;
+const drawerWidth = 380;
 
-export default function ClippedDrawer() {
+export default function ClippedDrawer () {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-      <Toolbar>
+        <Toolbar>
           <IconButton
             size="small"
             sx={{ mr: 2 }}
-            style={{backgroundColor:'white'}}
+            style={{ backgroundColor: 'white' }}
           >
-           <img
+            <img
               src='/brand.png'
               loading="lazy"
               width={30}
@@ -29,8 +29,10 @@ export default function ClippedDrawer() {
       </AppBar>
       <Drawer
         variant="permanent"
+        className='sidebarMenu'
         sx={{
-          width: drawerWidth,
+          width: '100%',
+          maxWidth: drawerWidth,
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
         }}

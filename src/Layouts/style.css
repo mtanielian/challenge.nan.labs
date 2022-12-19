@@ -1,0 +1,17 @@
+@media (max-width: 950px) {
+  .sidebar {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .sidebarMenu {
+    max-width: 100% !important;
+  }
+
+  .sidebarMenu>div {
+
+    position: relative !important;
+    width: 100% !important;
+
+  }
+}
