@@ -1,7 +1,7 @@
-import { Box, Button, Stack, TextField } from "@mui/material"
-import { useUploadS3 } from "../hooks/useUploadS3";
+import { Box, Button, Stack, TextField } from '@mui/material'
+import { useUploadS3 } from '../hooks/useUploadS3'
 
-window.Buffer = window.Buffer || require("buffer").Buffer;
+window.Buffer = window.Buffer || require('buffer').Buffer
 
 const UploadPhoto = () => {
   const { setFile, loading, error, handleUpload } = useUploadS3()

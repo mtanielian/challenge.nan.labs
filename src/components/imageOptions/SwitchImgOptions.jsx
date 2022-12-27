@@ -1,7 +1,7 @@
-import { useContext, useState } from "react"
-import PropTypes from 'prop-types';
-import { Switch } from "@mui/material"
-import { ImageContext } from "../../contexts/ImageContext"
+import { useContext, useState } from 'react'
+import PropTypes from 'prop-types'
+import { Switch } from '@mui/material'
+import { ImageContext } from '../../contexts/ImageContext'
 
 
 const SwitchImgOptions = ({options, handleOptionSelected = () => {}}) => {

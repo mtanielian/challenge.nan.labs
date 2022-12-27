@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import MenuBar from '../components/menu/MenuBar'
-import { Grid } from "@mui/material"
+import { Grid } from '@mui/material'
 import './style.css'
 
 const MainLayout = ({ children }) => {
   return (
     <Grid container style={{ height: '100%', minHeight: '100vh' }}>
-      <Grid className='sidebar' style={{ flex: 1, maxWidth: 380, flex: 1 }} >
+      <Grid className='sidebar' style={{ flex: 1, maxWidth: 380 }} >
         <MenuBar />
       </Grid>
       <Grid item style={{ flex: 2 }}>

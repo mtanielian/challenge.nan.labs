@@ -1,5 +1,18 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const api = axios.create({}) 
+//const api = axios.create({}) 
+//export default api
 
-export default api;
+
+class Api {
+  constructor () {
+    this.http = new axios.create({})
+  }
+
+  get(url) {
+    return this.http.get(url)
+  }
+
+}
+
+export default new Api()

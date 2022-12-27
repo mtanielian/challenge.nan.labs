@@ -2,7 +2,7 @@ import MenuItems from './MenuItems'
 import { IconButton, Box, Drawer, AppBar, CssBaseline, Toolbar, Typography, Divider } from '@mui/material'
 
 
-const drawerWidth = 380;
+const drawerWidth = 380
 
 export default function ClippedDrawer () {
   return (
@@ -34,7 +34,7 @@ export default function ClippedDrawer () {
           width: '100%',
           maxWidth: drawerWidth,
           flexShrink: 0,
-          [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+          ['& .MuiDrawer-paper']: { width: drawerWidth, boxSizing: 'border-box' },
         }}
       >
         <Toolbar />
@@ -44,5 +44,5 @@ export default function ClippedDrawer () {
         </Box>
       </Drawer>
     </Box>
-  );
+  )
 }

@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { ImageContext } from '../contexts/ImageContext'
 import { saveAs } from 'file-saver'
-import FabButton from './UI/FabButton';
-import AddIcon from '@mui/icons-material/Add';
-import UndoIcon from '@mui/icons-material/Undo';
-import CancelIcon from '@mui/icons-material/Cancel';
+import FabButton from './UI/FabButton'
+import AddIcon from '@mui/icons-material/Add'
+import UndoIcon from '@mui/icons-material/Undo'
+import CancelIcon from '@mui/icons-material/Cancel'
 
 const HomeOptionsButtons = () => {
 
@@ -20,7 +20,7 @@ const HomeOptionsButtons = () => {
   }
 
   const resetImage = () => {
-    setImage(prev => imgOrigin)
+    setImage(imgOrigin)
     setOptions({})
     setImageProperties({})
     historyProps.current = []

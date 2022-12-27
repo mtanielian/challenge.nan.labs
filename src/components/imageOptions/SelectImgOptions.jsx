@@ -1,10 +1,10 @@
 import  {useContext, useState } from 'react'
-import PropTypes from 'prop-types';
-import { ImageContext } from '../../contexts/ImageContext';
+import PropTypes from 'prop-types'
+import { ImageContext } from '../../contexts/ImageContext'
 import { Autocomplete, TextField } from '@mui/material'
 
 const SelectImgOptions = ({ options, handleOptionSelected = () => {} }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState('')
   const {imageProperties} = useContext(ImageContext)
   let initValue = options.initValue || ''
   if (imageProperties[options.param]) { 
@@ -18,7 +18,7 @@ const SelectImgOptions = ({ options, handleOptionSelected = () => {} }) => {
       getOptionLabel={(option) => String(option) || ''}
       inputValue={inputValue}
       onInputChange={(event, newInputValue) => {
-        setInputValue(newInputValue);
+        setInputValue(newInputValue)
         handleOptionSelected(newInputValue)
       }}
       id="controllable-states-demo"

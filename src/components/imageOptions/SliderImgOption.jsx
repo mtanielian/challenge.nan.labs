@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {  Slider } from '@mui/material'
 import { ImageContext } from '../../contexts/ImageContext'
 

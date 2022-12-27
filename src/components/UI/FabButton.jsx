@@ -3,7 +3,7 @@ import { Fab } from '@mui/material'
 
 const FabButton = ({ 
   title = '', icon = '', handleClick = () => {},
-  variant = "extended", color = 'primary',  style = {}
+  variant = 'extended', color = 'primary',  style = {}
 }) => {
   
   return (

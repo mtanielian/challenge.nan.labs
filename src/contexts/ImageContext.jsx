@@ -1,4 +1,5 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useRef, useState } from 'react'
+import PropTypes from 'prop-types'
 export const ImageContext = createContext({})
 
 export const ImageContextProvider = ({children}) => {
@@ -16,7 +17,7 @@ export const ImageContextProvider = ({children}) => {
   const optionSelected = ({param, val}) => {
     if (image === '') return
     setImageProperties( (prev) => { 
-      historyProps.current.push({ ...prev, [param] : val}); 
+      historyProps.current.push({ ...prev, [param] : val})
       return { ...prev, [param] : val} 
     })
   } 
@@ -33,8 +34,8 @@ export const ImageContextProvider = ({children}) => {
     if (!historyProps || !historyProps.current || historyProps.current.length <= 1 ) return 
     
     historyProps.current.pop()
-    const t = historyProps.current[historyProps.current.length -1]
-    setImageProperties( prev => t )
+    const history = historyProps.current[historyProps.current.length -1]
+    setImageProperties( history )
   }
   
 
@@ -56,4 +57,11 @@ export const ImageContextProvider = ({children}) => {
     </ImageContext.Provider>
   )
 
+}
+
+ImageContextProvider.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 }

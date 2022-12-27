@@ -1,6 +1,6 @@
-import { useEffect, useContext } from "react"
-import { getImagesImgix } from "../services/imgix.services"
-import { ImageContext } from "../contexts/ImageContext"
+import { useEffect, useContext } from 'react'
+import { getImagesImgix } from '../services/imgix.services'
+import { ImageContext } from '../contexts/ImageContext'
 
 const useAutoCompleteImages = () => {
   const {

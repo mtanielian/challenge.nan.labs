@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react"
-import React from "react"
-import ImageEdition from "../../src/components/ImageEdition"
+import { render } from '@testing-library/react'
+import React from 'react'
+import ImageEdition from '../../src/components/ImageEdition'
 
 describe('test  component <ImageEdition />', () => {
   test('first time should show skeleton', ()=> {
@@ -11,10 +11,10 @@ describe('test  component <ImageEdition />', () => {
   test('when have image', ()=> {
     const image = 'https://assets.imgix.net/unsplash/alarmclock.jpg'
     
-    const mockUseContext = jest.spyOn(React, "useContext");
+    const mockUseContext = jest.spyOn(React, 'useContext')
     mockUseContext.mockReturnValue({
       image
-    });
+    })
 
     const { container } = render(
       <ImageEdition />
